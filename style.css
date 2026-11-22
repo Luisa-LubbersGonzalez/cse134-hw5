@@ -287,3 +287,27 @@ input:user-valid, textarea:user-valid {
     font-size: 1rem;
     margin: 0.25rem 0;
 }
+
+dog-card {
+    display: block;
+    text-align: center;
+}
+
+dog-card .dog-caption {
+    font-style: italic;
+}
+
+dog-card .dog-status {
+    font-size: 0.9rem;
+}
+
+#dog-details-toggle {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.4em 1em;
+    border-radius: 20px;
+}
+
+[hidden] {
+    display: none !important;
+}
