@@ -308,6 +308,18 @@ dog-card .dog-status {
     border-radius: 20px;
 }
 
+dog-card .dog-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+dog-card .dog-controls button {
+    padding: 0.4em 1em;
+    border-radius: 20px;
+}
+
 [hidden] {
     display: none !important;
 }
