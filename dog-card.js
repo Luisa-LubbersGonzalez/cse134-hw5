@@ -161,6 +161,29 @@ customElements.define("dog-card", DogCard);
 const dogCard = document.querySelector("dog-card");
 const detailsToggle = document.querySelector("#dog-details-toggle");
 
+const DOG_MODE_KEY = "hw5-dog-card-mode";
+
+function getSavedDogMode() {
+    try {
+        const savedMode = localStorage.getItem(DOG_MODE_KEY);
+        if (savedMode === "compact" || savedMode === "expanded") {
+            return savedMode;
+        }
+        return "expanded";
+    } catch (error) {
+        console.warn("Could not read the saved dog card mode. Using the default.", error);
+        return "expanded";
+    }
+}
+
+function saveDogMode(mode) {
+    try {
+        localStorage.setItem(DOG_MODE_KEY, mode);
+    } catch (error) {
+        console.warn("Could not save the dog card mode. It still works on this page.", error);
+    }
+}
+
 function updateToggleLabel() {
     if (dogCard.hasAttribute("compact")) {
         detailsToggle.textContent = "Show dog details";
@@ -169,11 +192,24 @@ function updateToggleLabel() {
     }
 }
 
-if (dogCard !== null && detailsToggle !== null) {
+function applyDogMode(mode) {
+    dogCard.toggleAttribute("compact", mode === "compact");
     updateToggleLabel();
+}
+
+if (dogCard !== null && detailsToggle !== null) {
+    applyDogMode(getSavedDogMode());
     detailsToggle.hidden = false;
-    detailsToggle.addEventListener("click", function() {
-        dogCard.toggleAttribute("compact");
-        updateToggleLabel();
+
+    detailsToggle.addEventListener("click", function () {
+        let newMode;
+        if (dogCard.hasAttribute("compact")) {
+            newMode = "expanded";
+        } else {
+            newMode = "compact";
+        }
+
+        applyDogMode(newMode);
+        saveDogMode(newMode);
     });
 }

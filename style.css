@@ -138,6 +138,7 @@ img {
     height: auto;
     border: 5px solid var(--surface);
     border-radius: var(--radius);
+    box-sizing: border-dox;
 }
 
 /* Child combinator to center my images relative to the home page */
@@ -289,8 +290,21 @@ input:user-valid, textarea:user-valid {
 }
 
 dog-card {
+    --dog-card-background: var(--surface);
+    --dog-card-text: var(--text);
+    --dog-card-border: var(--purple);
+    --dog-card-accent: var(--accent);
     display: block;
     text-align: center;
+    background-color: var(--dog-card-background, white);
+    color: var(--dog-card-text, #3B2A4D);
+    border: 2px solid var(--dog-card-border, #D9C8F5);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+dog-card h2 {
+    color: var(--dog-card-accent, #7A4FB5);
 }
 
 dog-card .dog-caption {
@@ -318,6 +332,7 @@ dog-card .dog-controls {
 dog-card .dog-controls button {
     padding: 0.4em 1em;
     border-radius: 20px;
+    border-color: var(--dog-card-accent, #7A4FB5);
 }
 
 [hidden] {
