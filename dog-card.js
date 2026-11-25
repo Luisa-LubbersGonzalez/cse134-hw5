@@ -58,7 +58,7 @@ class DogCard extends HTMLElement {
     buildInterface() {
         const fragment = document.createDocumentFragment();
         const heading = document.createElement("h2");
-        heading.textContent = "Meet My Dogs";
+        heading.textContent = "Meet Some Dogs";
         fragment.appendChild(heading);
         
         this.image = document.createElement("img");
